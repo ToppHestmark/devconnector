@@ -1,10 +1,8 @@
 const app = require("express")();
-const bodyParser = require("body-parser");
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
 require("dotenv").config();
+require("./startup/bodyParser")(app);
+require("./startup/config")(app);
 require("./startup/routes")(app);
 require("./startup/db")();
 

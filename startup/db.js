@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 
-module.exports = function () {
-  const db = require("../config/keys").mongoURI;
+module.exports = () => {
+  // const db = require("../config/keys").mongoURI;
+  const db = "mongodb://localhost/devconnector";
 
   mongoose
     .connect(db, {
