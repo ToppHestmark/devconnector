@@ -1,3 +1,3 @@
 # Dev Connector
 
-[ ] - SET DATABASE BACK TO THE PRODUCTION DB BEFORE DEPLOY.
+[x] - Database connected to the cloud.

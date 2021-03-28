@@ -3,6 +3,8 @@ const router = express.Router();
 
 const auth = require("../../middleware/auth")();
 const validateProfileInput = require("../../validation/profile");
+const validateExperienceInput = require("../../validation/experience");
+const validateEducationInput = require("../../validation/education");
 
 const Profile = require("../../models/Profile");
 const User = require("../../models/User");
@@ -18,7 +20,7 @@ router.get("/", auth, (req, res) => {
     .populate("user", ["name", "avatar"])
     .then((profile) => {
       if (!profile) {
-        errors.noprofile = "There is no profile for this user";
+        errors.noprofile = "There is no profile for this user.";
         return res.status(404).json(errors);
       }
 
@@ -27,13 +29,68 @@ router.get("/", auth, (req, res) => {
     .catch((err) => res.status(404).json(err.message));
 });
 
+// @route GET: api/profile/all - All profiles - Public
+router.get("/all", (req, res) => {
+  const errors = {};
+
+  Profile.find()
+    .populate("user", ["name", "avatar"])
+    .then((profiles) => {
+      if (!profiles) {
+        errors.noprofile = "There are no profiles to be found.";
+        return res.status(404).json(errors);
+      }
+
+      res.json(profiles);
+    })
+    .catch((err) =>
+      res.status(404).json({ profile: "There are no profiles to be found." })
+    );
+});
+
+// @route GET: api/profile/handle/:handle - Profile by handle - Public
+router.get("/handle/:handle", (req, res) => {
+  const errors = {};
+
+  Profile.findOne({ handle: req.params.handle })
+    .populate("user", ["name", "avatar"])
+    .then((profile) => {
+      if (!profile) {
+        errors.noprofile = "There is no profile for this user.";
+        res.status(404).json(errors);
+      }
+
+      res.json(profile);
+    })
+    .catch((err) => res.status(404).json(err));
+});
+
+// @route GET: api/profile/user/:user_id - Profile by user ID - Public
+router.get("/user/:user_id", (req, res) => {
+  const errors = {};
+
+  Profile.findOne({ user: req.params.user_id })
+    .populate("user", ["name", "avatar"])
+    .then((profile) => {
+      if (!profile) {
+        errors.noprofile = "There is no profile for this user.";
+        res.status(404).json(errors);
+      }
+
+      res.json(profile);
+    })
+    .catch((err) =>
+      res
+        .status(404)
+        .json({ profile: "There is no matching profile with this user." })
+    );
+});
+
 // @route POST: api/profile - create user profile - Private
 router.post("/", auth, (req, res) => {
   const { errors, isValid } = validateProfileInput(req.body);
 
-  if (!isValid) {
-    return res.status(400).json(errors);
-  }
+  if (!isValid) return res.status(400).json(errors);
 
   const profileFields = {};
   profileFields.user = req.user.id;
@@ -83,6 +140,97 @@ router.post("/", auth, (req, res) => {
       });
     }
   });
+});
+
+// @route POST: api/profile/experience - Add experiences - Private
+router.post("/experiences", auth, (req, res) => {
+  const { errors, isValid } = validateExperienceInput(req.body);
+
+  if (!isValid) return res.status(400).json(errors);
+
+  Profile.findOne({ user: req.user.id })
+    .then((profile) => {
+      const newExp = {
+        title: req.body.title,
+        company: req.body.company,
+        location: req.body.location,
+        from: req.body.from,
+        to: req.body.to,
+        current: req.body.current,
+        description: req.body.description,
+      };
+
+      profile.experience.unshift(newExp);
+
+      profile.save().then((profile) => res.json(profile));
+    })
+    .catch((err) => console.log(err));
+});
+
+// @route POST: api/profile/education - Add education - Private
+router.post("/education", auth, (req, res) => {
+  const { errors, isValid } = validateEducationInput(req.body);
+
+  if (!isValid) return res.status(400).json(errors);
+
+  Profile.findOne({ user: req.user.id })
+    .then((profile) => {
+      const newEdu = {
+        school: req.body.school,
+        degree: req.body.degree,
+        fieldofstudy: req.body.fieldofstudy,
+        from: req.body.from,
+        to: req.body.to,
+        current: req.body.current,
+        description: req.body.description,
+      };
+
+      profile.education.unshift(newEdu);
+
+      profile.save().then((profile) => res.json(profile));
+    })
+    .catch((err) => console.log(err));
+});
+
+// @route DELETE: api/profile/experience/:exp_id - Delete experience - Private
+router.delete("/experience/:exp_id", auth, (req, res) => {
+  Profile.findOne({ user: req.user.id })
+    .then((profile) => {
+      const removeIndex = profile.experience
+        .map((item) => item.id)
+        .indexOf(req.params.exp_id);
+
+      profile.experience.splice(removeIndex, 1);
+
+      profile.save().then((profile) => res.json(profile));
+    })
+    .catch((err) => res.status(404).json(err));
+});
+
+// @route DELETE: api/profile/education/:edu_id - Delete education - Private
+router.delete("/education/:edu_id", auth, (req, res) => {
+  Profile.findOne({ user: req.user.id })
+    .then((profile) => {
+      const removeIndex = profile.education
+        .map((item) => item.id)
+        .indexOf(req.params.edu_id);
+
+      profile.education.splice(removeIndex, 1);
+
+      profile.save().then((profile) => res.json(profile));
+    })
+    .catch((err) => res.status(404).json(err));
+});
+
+// @route DELETE: api/profile - Delete user and profile - Private
+router.delete("/", auth, (req, res) => {
+  Profile.findOneAndRemove({ user: req.user.id })
+    .then(() => {
+      User.findOneAndRemove({ _id: req.user.id })
+        .then(() => res.json({ success: true }))
+        .catch((err) => console.log(err));
+    })
+    .catch((err) => console.log(err));
 });
 
 module.exports = router;
