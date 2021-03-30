@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import "./landing.scss";
 
 const Landing = () => {
+  if (localStorage.jwtToken) {
+    window.location.href = "/dashboard";
+  }
   return (
     <header className="landing">
       <div className="dark-overlay landing-inner text-light">

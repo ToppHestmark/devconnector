@@ -1,7 +1,30 @@
 import React from "react";
-import "./app.scss";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import jwt_decode from "jwt-decode";
+import setAuthToken from "./utils/setAuthToken";
+import { logoutUser, setCurrentUser } from "./store/actions/authActions";
+
 import { Navbar, Footer, Landing, Register, Login } from "./components";
+import "./app.scss";
+import store from "./store/store";
+
+const jwtTokenFromLocalStorage = localStorage.jwtToken;
+if (jwtTokenFromLocalStorage) {
+  setAuthToken(jwtTokenFromLocalStorage);
+
+  const decoded = jwt_decode(jwtTokenFromLocalStorage);
+  store.dispatch(setCurrentUser(decoded));
+
+  const currentTime = Date.now() / 1000;
+  if (decoded.exp < currentTime) {
+    store.dispatch(logoutUser());
+
+    // TODO: Clear current profiles
+
+    window.location.href = "/login";
+  }
+}
 
 const App = () => {
   return (
