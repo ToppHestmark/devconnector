@@ -1,13 +1,27 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
-import { logoutUser, setCurrentUser } from "./store/actions/authActions";
 
-import { Navbar, Footer, Landing, Register, Login } from "./components";
-import "./app.scss";
+import {
+  logoutUser,
+  setCurrentUser,
+  clearCurrentProfile,
+} from "./store/actions";
 import store from "./store/store";
+
+import {
+  Navbar,
+  Footer,
+  Landing,
+  Register,
+  Login,
+  Dashboard,
+  PrivateRoute,
+  CreateProfile,
+} from "./components";
+import "./app.scss";
 
 const jwtTokenFromLocalStorage = localStorage.jwtToken;
 if (jwtTokenFromLocalStorage) {
@@ -19,8 +33,7 @@ if (jwtTokenFromLocalStorage) {
   const currentTime = Date.now() / 1000;
   if (decoded.exp < currentTime) {
     store.dispatch(logoutUser());
-
-    // TODO: Clear current profiles
+    store.dispatch(clearCurrentProfile());
 
     window.location.href = "/login";
   }
@@ -32,17 +45,21 @@ const App = () => {
       <Router>
         <Navbar />
 
-        <Route exact path="/">
-          <Landing />
-        </Route>
+        <Route exact path="/" component={Landing} />
 
         <div className="container">
-          <Route exact path="/register">
-            <Register />
-          </Route>
-          <Route exact path="/login">
-            <Login />
-          </Route>
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
+          <Switch>
+            <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          </Switch>
+          <Switch>
+            <PrivateRoute
+              exact
+              path="/create-profile"
+              component={CreateProfile}
+            />
+          </Switch>
         </div>
 
         <Footer />

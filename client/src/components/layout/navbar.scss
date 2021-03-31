@@ -1,4 +1,30 @@
+.navbar {
+  position: absolute;
+  width: 100%;
+  z-index: 9;
+}
+
 .navbar-avatar-image {
   width: 25px;
   margin-right: 5px;
+}
+
+@media screen and (max-width: 564px) {
+  .navbar {
+    padding-bottom: 0.7em;
+  }
+
+  li {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .nav-link.developers {
+    padding-top: 1.8em;
+  }
+
+  .navbar-avatar-image {
+    margin-right: 0.5em;
+    width: 20px;
+  }
 }

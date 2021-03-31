@@ -5,6 +5,10 @@
   flex-direction: column;
 }
 
+:is(.login, .register, .dashboard, .create-profile, .profiles) {
+  margin-top: var(--margin-top);
+}
+
 .card-form {
   opacity: 0.9;
 }
@@ -16,4 +20,23 @@
 
 .form-control::placeholder {
   color: #bbb !important;
+}
+
+.loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  // transform: translate(-50%, -50%);
+  font-weight: 200;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 3rem !important;
+  }
 }
