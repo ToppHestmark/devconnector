@@ -143,7 +143,7 @@ router.post("/", auth, (req, res) => {
 });
 
 // @route POST: api/profile/experience - Add experiences - Private
-router.post("/experiences", auth, (req, res) => {
+router.post("/experience", auth, (req, res) => {
   const { errors, isValid } = validateExperienceInput(req.body);
 
   if (!isValid) return res.status(400).json(errors);

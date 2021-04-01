@@ -20,8 +20,11 @@ import {
   Dashboard,
   PrivateRoute,
   CreateProfile,
+  EditProfile,
+  AddExperience,
+  AddEducation,
 } from "./components";
-import "./app.scss";
+import "./App.scss";
 
 const jwtTokenFromLocalStorage = localStorage.jwtToken;
 if (jwtTokenFromLocalStorage) {
@@ -58,6 +61,23 @@ const App = () => {
               exact
               path="/create-profile"
               component={CreateProfile}
+            />
+          </Switch>
+          <Switch>
+            <PrivateRoute exact path="/edit-profile" component={EditProfile} />
+          </Switch>
+          <Switch>
+            <PrivateRoute
+              exact
+              path="/add-experience"
+              component={AddExperience}
+            />
+          </Switch>
+          <Switch>
+            <PrivateRoute
+              exact
+              path="/add-education"
+              component={AddEducation}
             />
           </Switch>
         </div>

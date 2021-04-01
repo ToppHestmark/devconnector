@@ -5,7 +5,7 @@
   flex-direction: column;
 }
 
-:is(.login, .register, .dashboard, .create-profile, .profiles) {
+:is(.login, .register, .dashboard, .create-profile, .profiles, .add-experience, .add-education) {
   margin-top: var(--margin-top);
 }
 

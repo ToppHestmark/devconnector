@@ -84,7 +84,11 @@ class Login extends Component {
                   error={errors.password}
                 />
 
-                <input type="submit" className="btn btn-info btn-block mt-4" />
+                <input
+                  className="btn btn-info btn-block mt-4"
+                  type="submit"
+                  value="Submit"
+                />
               </form>
             </div>
           </div>

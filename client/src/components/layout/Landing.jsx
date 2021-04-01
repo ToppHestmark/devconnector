@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./landing.scss";
+import "./Landing.scss";
 
 const Landing = () => {
   if (localStorage.jwtToken) {

@@ -1,14 +1,22 @@
 import React, { Component } from "react";
-import Spinner from "../common/Spinner";
 import { Link } from "react-router-dom";
+
+import Spinner from "../common/Spinner";
+import ProfileActions from "./ProfileActions";
 
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getCurrentProfile } from "../../store/actions/profileActions";
+import { getCurrentProfile, deleteAccount } from "../../store/actions";
+import Education from "./Education";
+import Experience from "./Experience";
 
 class Dashboard extends Component {
   componentDidMount() {
     this.props.getCurrentProfile();
+  }
+
+  onDeleteClick(e) {
+    this.props.deleteAccount();
   }
 
   render() {
@@ -21,7 +29,23 @@ class Dashboard extends Component {
       dashboardContent = <Spinner />;
     } else {
       if (Object.keys(profile).length > 0) {
-        dashboardContent = <h4>TODO: Display profile</h4>;
+        dashboardContent = (
+          <div>
+            <p className="lead text-muted">
+              Welcome <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
+            </p>
+            <ProfileActions className="profile-actions" />
+            <Experience experience={profile.experience} />
+            <Education education={profile.education} />
+            <button
+              onClick={this.onDeleteClick.bind(this)}
+              className="btn btn-danger my-4"
+            >
+              {" "}
+              Delete My Account{" "}
+            </button>
+          </div>
+        );
       } else {
         dashboardContent = (
           <div>
@@ -52,6 +76,7 @@ class Dashboard extends Component {
 
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
+  deleteAccount: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
 };
@@ -61,4 +86,6 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { getCurrentProfile })(Dashboard);
+export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(
+  Dashboard
+);

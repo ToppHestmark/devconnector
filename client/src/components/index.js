@@ -6,3 +6,6 @@ export { default as Register } from "./auth/Register";
 export { default as Dashboard } from "./dashboard/Dashboard";
 export { default as PrivateRoute } from "./common/PrivateRoute";
 export { default as CreateProfile } from "./create-profile/CreateProfile";
+export { default as EditProfile } from "./edit-profile/EditProfile";
+export { default as AddExperience } from "./add-credentials/AddExperience";
+export { default as AddEducation } from "./add-credentials/AddEducation";

@@ -105,7 +105,11 @@ class Register extends Component {
                   error={errors.password2}
                 />
 
-                <input type="submit" className="btn btn-info btn-block mt-4" />
+                <input
+                  className="btn btn-info btn-block mt-4"
+                  value="Submit"
+                  type="submit"
+                />
               </form>
             </div>
           </div>
