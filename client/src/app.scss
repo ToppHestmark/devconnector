@@ -1,3 +1,27 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --margin-top: 4em;
+}
+
+html,
+body {
+  width: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .app {
   width: 100%;
   min-height: 100vh;
@@ -5,7 +29,7 @@
   flex-direction: column;
 }
 
-:is(.login, .register, .dashboard, .create-profile, .profiles, .add-experience, .add-education) {
+:is(.login, .register, .dashboard, .create-profile, .profiles, .add-experience, .add-education, .profiles, .profile, .not-found) {
   margin-top: var(--margin-top);
 }
 
