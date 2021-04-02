@@ -12,6 +12,7 @@ import {
   Profiles,
   Profile,
   NotFound,
+  Posts,
 } from "../components";
 
 const Routes = () => {
@@ -35,6 +36,9 @@ const Routes = () => {
       </Switch>
       <Switch>
         <PrivateRoute exact path="/add-education" component={AddEducation} />
+      </Switch>
+      <Switch>
+        <PrivateRoute exact path="/feed" component={Posts} />
       </Switch>
       <Route exact path="/not-found" component={NotFound} />
     </div>

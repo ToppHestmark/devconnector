@@ -12,3 +12,4 @@ export { default as AddEducation } from "./add-credentials/AddEducation";
 export { default as Profiles } from "./profiles/Profiles";
 export { default as Profile } from "./profile/Profile";
 export { default as NotFound } from "./common/NotFound";
+export { default as Posts } from "./posts/Posts";

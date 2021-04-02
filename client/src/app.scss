@@ -4,7 +4,7 @@
 }
 
 :root {
-  --margin-top: 4em;
+  --margin-top: 5em;
 }
 
 html,
@@ -29,7 +29,7 @@ body {
   flex-direction: column;
 }
 
-:is(.login, .register, .dashboard, .create-profile, .profiles, .add-experience, .add-education, .profiles, .profile, .not-found) {
+:is(.login, .register, .dashboard, .create-profile, .profiles, .add-experience, .add-education, .profiles, .profile, .not-found, .feed) {
   margin-top: var(--margin-top);
 }
 
