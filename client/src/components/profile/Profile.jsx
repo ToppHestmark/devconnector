@@ -9,7 +9,6 @@ import ProfileCreds from "./ProfileCreds";
 import ProfileGithub from "./ProfileGithub";
 import { Spinner } from "../common";
 import { getProfileByHandle } from "../../store/actions";
-import "./Profile.scss";
 
 class Profile extends Component {
   componentDidMount() {

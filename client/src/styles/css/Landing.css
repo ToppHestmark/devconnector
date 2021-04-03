@@ -1,0 +1,10 @@
+.landing {
+  position: relative;
+  background: var(--clr-bg-fb);
+}
+
+.landing-inner {
+  padding-top: 80px;
+}
+
+/*# sourceMappingURL=Landing.css.map */

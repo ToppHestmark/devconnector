@@ -9,7 +9,6 @@ import { connect } from "react-redux";
 import { getCurrentProfile, deleteAccount } from "../../store/actions";
 import Education from "./Education";
 import Experience from "./Experience";
-import "./Dashboard.scss";
 
 class Dashboard extends Component {
   componentDidMount() {

@@ -1,5 +1,3 @@
-@import "./components/layout/Customs.scss";
-
 * {
   margin: 0;
   box-sizing: border-box;
@@ -51,3 +49,5 @@ img {
     font-size: 3rem !important;
   }
 }
+
+/*# sourceMappingURL=App.css.map */

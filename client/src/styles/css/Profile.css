@@ -1,0 +1,55 @@
+.text-dark {
+  font-weight: 300;
+  color: var(--clr-light-500) !important;
+}
+
+.instagram {
+  color: #d45273;
+}
+
+.youtube {
+  color: #ff0000;
+}
+
+.linkedin {
+  color: #0a66c2;
+}
+
+.twitter {
+  color: #1da1f2;
+}
+
+.website {
+  color: #4e98d5;
+}
+
+.skillset {
+  color: var(--clr-fb);
+}
+
+.lead {
+  font-size: 0.9rem;
+}
+
+.badge-container {
+  height: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+.badge-container span {
+  margin-left: 0.2em;
+}
+
+.badge-info {
+  background: #dba247;
+}
+
+.badge-success {
+  background: rgba(75, 236, 75, 0.952);
+}
+
+.badge-secondary {
+  background-color: rgba(93, 91, 91, 0.877);
+}
+
+/*# sourceMappingURL=Profile.css.map */
