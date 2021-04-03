@@ -3,7 +3,7 @@ import Routes from "./routes";
 import isLogin from "./validation/is-login";
 
 import { Navbar, Footer, Landing } from "./components";
-import "./App.scss";
+import "./App.css";
 
 const App = () => {
   isLogin();
