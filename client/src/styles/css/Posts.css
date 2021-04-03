@@ -1,6 +1,7 @@
 .btn-blue {
   color: var(--clr-light);
 }
+
 .btn-blue:hover {
   color: var(--clr-light) !important;
   background: var(--clr-fb-light) !important;
@@ -9,7 +10,6 @@
 .liked-post {
   color: var(--clr-fb) !important;
 }
-
 .poster-name {
   font-weight: 400;
   font-size: 1.1rem;
@@ -20,10 +20,7 @@
   flex-direction: column;
   justify-content: space-between;
 }
-
 .post-item__actionsContainer {
   display: flex;
   justify-content: flex-end;
 }
-
-/*# sourceMappingURL=Posts.css.map */

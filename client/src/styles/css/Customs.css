@@ -1,6 +1,7 @@
 .btn-info {
   background: var(--clr-fb);
 }
+
 .btn-info:hover {
   background: var(--clr-fb-light);
 }
@@ -9,8 +10,7 @@
   background: var(--clr-danger);
   border: 0;
 }
+
 .btn-danger:hover {
   background: var(--clr-danger);
 }
-
-/*# sourceMappingURL=Customs.css.map */
