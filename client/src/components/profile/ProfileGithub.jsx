@@ -41,22 +41,23 @@ class ProfileGithub extends Component {
       <div key={repo.id} className="card card-body mb-2">
         <div className="row">
           <div className="col-md-6">
-            <h4>
-              <Link to={repo.html_url} className="text-info" target="_blank">
+            <h6>
+              <Link to={repo.html_url} className="liked" target="_blank">
                 {repo.name}
               </Link>
-            </h4>
+            </h6>
             <p>{repo.description}</p>
           </div>
-          <div className="col-md-6">
+          <div className="col-md-6 badge-container">
             <span className="badge badge-info mr-1">
-              Stars: {repo.stargazers_count}
+              <i class="fas fa-star mr-1"></i>
+              {repo.stargazers_count}
             </span>
             <span className="badge badge-secondary mr-1">
-              Watchers: {repo.watchers_count}
+              <i class="fas fa-eye mr-1"></i> {repo.watchers_count}
             </span>
             <span className="badge badge-success">
-              Forks: {repo.forks_count}
+              <i class="fas fa-code-branch mr-1"></i> {repo.forks_count}
             </span>
           </div>
         </div>
@@ -66,7 +67,7 @@ class ProfileGithub extends Component {
     return (
       <div ref="myRef">
         <hr re />
-        <h3 className="mb-4">Latest Github Repos</h3>
+        <h3 className="mb-4 text-dark">Latest Github Repos</h3>
         {repoItems}
       </div>
     );

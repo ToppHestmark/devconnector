@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import { getCurrentProfile, deleteAccount } from "../../store/actions";
 import Education from "./Education";
 import Experience from "./Experience";
+import "./Dashboard.scss";
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -64,7 +65,7 @@ class Dashboard extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <h1 className="display-4">DashBoard</h1>
+              <h1 className="display-4">Dashboard</h1>
               {dashboardContent}
             </div>
           </div>

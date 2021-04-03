@@ -2,6 +2,15 @@
   position: absolute;
   width: 100%;
   z-index: 9;
+  background: var(--clr-fb) !important;
+}
+
+.nav-link {
+  color: var(--clr-navlink) !important;
+
+  &:hover {
+    color: var(--clr-light) !important;
+  }
 }
 
 .navbar-avatar-image {

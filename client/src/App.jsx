@@ -12,8 +12,10 @@ const App = () => {
     <section className="app">
       <Router>
         <Navbar />
-        <Route exact path="/" component={Landing} />
-        <Route component={Routes} />
+        <main>
+          <Route exact path="/" component={Landing} />
+          <Route component={Routes} />
+        </main>
       </Router>
       <Footer />
     </section>

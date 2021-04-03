@@ -13,3 +13,4 @@ export { default as Profiles } from "./profiles/Profiles";
 export { default as Profile } from "./profile/Profile";
 export { default as NotFound } from "./common/NotFound";
 export { default as Posts } from "./posts/Posts";
+export { default as Post } from "./post/Post";

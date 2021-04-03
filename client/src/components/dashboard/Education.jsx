@@ -40,7 +40,7 @@ class Education extends Component {
         <h4 className="mb-2">Education Credentials</h4>
         <table className="table">
           <thead>
-            <tr>
+            <tr className="text-dark">
               <th> School </th>
               <th> Degree </th>
               <th> Years </th>

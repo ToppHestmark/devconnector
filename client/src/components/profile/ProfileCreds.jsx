@@ -70,7 +70,7 @@ const ProfileCreds = ({ experience, education }) => {
   return (
     <div className="row my-3">
       <div className="col-md-6">
-        <h3 className="text-center text-info">Experience</h3>
+        <h3 className="text-center text-dark">Experience</h3>
         {expItems.length > 0 ? (
           <ul className="list-group mb-2">{expItems}</ul>
         ) : (
@@ -79,7 +79,7 @@ const ProfileCreds = ({ experience, education }) => {
       </div>
 
       <div className="col-md-6">
-        <h3 className="text-center text-info">Education</h3>
+        <h3 className="text-center text-dark">Education</h3>
         {eduItems.length > 0 ? (
           <ul className="list-group mb-2">{eduItems}</ul>
         ) : (

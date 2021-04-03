@@ -1,25 +1,28 @@
+@import "./components/layout/Customs.scss";
+
 * {
   margin: 0;
   box-sizing: border-box;
 }
 
 :root {
-  --margin-top: 5em;
+  --margin-top-main: 5em;
+  --clr-fb: #087bea;
+  --clr-fb-light: #3590e6;
+  --clr-bg-fb: #f0f2f5;
+  --clr-navlink: #dfe2e9;
+  --clr-light: rgb(243, 241, 241);
+  --clr-dark: rgb(36, 35, 35);
+  --clr-light-500: rgba(80, 79, 79, 0.835);
+  --clr-danger: rgba(243, 61, 61, 0.877);
 }
 
 html,
 body {
   width: 100%;
-  margin: 0;
-}
-
-body {
   min-height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  background: var(--clr-bg-fb);
 }
 
 .app {
@@ -29,29 +32,13 @@ body {
   flex-direction: column;
 }
 
-:is(.login, .register, .dashboard, .create-profile, .profiles, .add-experience, .add-education, .profiles, .profile, .not-found, .feed) {
-  margin-top: var(--margin-top);
+main {
+  margin-top: var(--margin-top-main);
 }
 
-.card-form {
-  opacity: 0.9;
-}
-
-.latest-profiles-img {
-  width: 40px;
-  height: 40px;
-}
-
-.form-control::placeholder {
-  color: #bbb !important;
-}
-
-.loading {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  // transform: translate(-50%, -50%);
-  font-weight: 200;
+.bg-info,
+.btn-blue {
+  background: var(--clr-fb) !important;
 }
 
 img {
