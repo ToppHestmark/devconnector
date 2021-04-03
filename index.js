@@ -1,6 +1,8 @@
-const app = require("express")();
 const express = require("express");
+const app = require("express")();
 const path = require("path");
+
+app.use(express.json());
 
 require("dotenv").config();
 require("./startup/bodyParser")(app);
