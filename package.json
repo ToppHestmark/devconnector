@@ -9,13 +9,16 @@
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false cd client && npm install && npm run build"
   },
   "engines": {
     "node": "14.15.5"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "Developers",
+    "Social media"
+  ],
+  "author": "Suphachai",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
